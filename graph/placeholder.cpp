@@ -9,3 +9,8 @@ double Placeholder::get_value()
 {
     return value;
 }
+
+void Placeholder::accept(GraphVisitor* visitor)
+{
+    visitor->visit(this);
+}

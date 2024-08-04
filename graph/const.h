@@ -8,4 +8,5 @@ class Const : public Node {
 public:
     Const(double _value) : value(_value) {};
     double get_value();
+    void accept(GraphVisitor* visitor);
 };

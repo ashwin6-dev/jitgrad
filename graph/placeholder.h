@@ -8,4 +8,5 @@ class Placeholder : public Node {
 public:
     void set_value(double value);
     double get_value();
+    void accept(GraphVisitor* visitor);
 };
