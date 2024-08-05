@@ -1,9 +1,10 @@
 #include "reg-allocator.h"
+#include <iostream>
 
 reg_allocation RegAllocator::allocate_registers(Node* graph)
 {
     queue = std::vector<Node*> { graph };
-    int prev_len = queue.size();
+    int prev_len = 0;
     int index = 0;
 
     while (prev_len != queue.size()) {
@@ -32,7 +33,34 @@ reg_allocation RegAllocator::allocate_registers(Node* graph)
     return allocation;
 }
 
-void RegAllocator::visit(BinOp* node)
+void RegAllocator::visit(Add* node)
+{
+    Node* left = node->left;
+    Node* right = node->right;
+
+    queue.push_back(left);
+    queue.push_back(right);
+}
+
+void RegAllocator::visit(Sub* node)
+{
+    Node* left = node->left;
+    Node* right = node->right;
+
+    queue.push_back(left);
+    queue.push_back(right);
+}
+
+void RegAllocator::visit(Mul* node)
+{
+    Node* left = node->left;
+    Node* right = node->right;
+
+    queue.push_back(left);
+    queue.push_back(right);
+}
+
+void RegAllocator::visit(Div* node)
 {
     Node* left = node->left;
     Node* right = node->right;

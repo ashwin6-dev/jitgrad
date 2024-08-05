@@ -8,6 +8,9 @@
 #include "../graph/placeholder.h"
 #include "../graph/ops.h"
 
+
+#include <iostream>
+
 typedef std::unordered_map<Node*, int> reg_allocation;
 
 class RegAllocator : public GraphVisitor {
@@ -16,7 +19,10 @@ class RegAllocator : public GraphVisitor {
 
 public:
     reg_allocation allocate_registers(Node* graph);
-    void visit(Const* node);
-    void visit(Placeholder* node);
-    void visit(BinOp* node);
+    void visit(Const* node) {};
+    void visit(Placeholder* node) {};
+    void visit(Add* node);
+    void visit(Sub* node);
+    void visit(Mul* node);
+    void visit(Div* node);
 };

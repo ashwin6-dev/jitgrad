@@ -1,4 +1,5 @@
 #include "ops.h"
+#include <iostream>
 
 void Add::accept(GraphVisitor* visitor)
 {
